@@ -55,7 +55,7 @@ public abstract class Divide {
 
 | 算法名   | 主要类名                                                     | 是否方差最小 | 时间复杂度 | 算法理解难度 |
 | -------- | ------------------------------------------------------------ | ------------ | ---------- | ------------ |
-| 顺序分组 | [SequenceDivide](https://github.com/AcceNoi/accenbot-rendr/blob/master/src/main/java/render/algorithm/SequenceDivide.java) | x           | O(n)       | o           |
+| 顺序分组 | [SequenceDivide](https://github.com/AcceNoi/accenbot-render/blob/main/src/main/java/render/algorithm/SequenceDivide.java) | x           | O(n)       | o           |
 |动态规划分组||-||o|
 
 ### 4.感谢
