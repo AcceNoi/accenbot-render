@@ -50,6 +50,7 @@ public abstract class Divide {
 - [x] 顺序分组（升序和降序）
 - [ ] 动态规划分组
 - [x] 均值参考回溯分组（原理是方差最小意味着更接近算数均值，所以在排序好的数组中，依次求和直到接近均值为止形成一个分组）
+- [ ] 瀑布流/最短优先分组（遍历数组，每次取和最小的分组放入新元素）
 - [ ] ...
 
 | 算法名   | 主要类名                                                     | 是否方差最小 | 时间复杂度 | 算法理解难度 |
@@ -57,6 +58,7 @@ public abstract class Divide {
 | 顺序分组 | [SequenceDivide](https://github.com/AcceNoi/accenbot-render/blob/main/src/main/java/render/algorithm/SequenceDivide.java) | x           | O(n)       | o           |
 |动态规划分组||-||o|
 |均值参考回溯分组|[AverageBacktraceDivide](https://github.com/AcceNoi/accenbot-render/blob/main/src/main/java/render/algorithm/AverageBacktraceDivide.java)|-|O(n^m)|-|
+|瀑布流/最短优先分组||x|O(n)|o|
 
 >**m为分组数，n为原始数据个数*，m<<n
 >
@@ -68,7 +70,4 @@ public abstract class Divide {
 
 ### 4.感谢
 
-希望各位能按照自己的想法提issue或者fork pull代码，可以按照3中的格式写明自己的算法。
-
-
-
+各位可以按照自己的想法提issue或者fork pull代码，或者对计划实现的算法写自己的实现，然后按照3中的格式写明自己的算法基本情况。
