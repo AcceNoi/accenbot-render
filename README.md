@@ -50,7 +50,7 @@ public abstract class Divide {
 - [x] 顺序分组（升序和降序）
 - [ ] 动态规划分组
 - [x] 均值参考回溯分组（原理是方差最小意味着更接近算数均值，所以在排序好的数组中，依次求和直到接近均值为止形成一个分组）
-- [ ] 瀑布流/最短优先分组（遍历数组，每次取和最小的分组放入新元素）
+- [x] 瀑布流/最短优先分组（遍历数组，每次取和最小的分组放入新元素）
 - [ ] ...
 
 | 算法名   | 主要类名                                                     | 是否方差最小 | 时间复杂度 | 算法理解难度 |
@@ -58,7 +58,7 @@ public abstract class Divide {
 | 顺序分组 | [SequenceDivide](https://github.com/AcceNoi/accenbot-render/blob/main/src/main/java/render/algorithm/SequenceDivide.java) | x           | O(n)       | o           |
 |动态规划分组||-||o|
 |均值参考回溯分组|[AverageBacktraceDivide](https://github.com/AcceNoi/accenbot-render/blob/main/src/main/java/render/algorithm/AverageBacktraceDivide.java)|-|O(n^m)|-|
-|瀑布流/最短优先分组||x|O(n)|o|
+|瀑布流/最短优先分组|[MinimumFirstDivide](https://github.com/AcceNoi/accenbot-render/blob/main/src/main/java/render/algorithm/MinimumFirstDivide.java)|x|O(n)|o|
 
 >**m为分组数，n为原始数据个数*，m<<n
 >
