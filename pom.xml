@@ -3,4 +3,20 @@
   <groupId>org.accen</groupId>
   <artifactId>accenbot-render</artifactId>
   <version>1.0</version>
+  <properties>
+  	<java.version>15</java.version>
+  </properties>
+  <build>
+  	<plugins>
+  		<plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-compiler-plugin</artifactId>
+           <configuration>
+               <compilerArgs>--enable-preview</compilerArgs>
+               <source>15</source>
+               <target>15</target>
+           </configuration>
+       </plugin>
+  	</plugins>
+  </build>
 </project>
