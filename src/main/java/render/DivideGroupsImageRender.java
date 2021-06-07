@@ -4,8 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
+
+import javax.imageio.ImageIO;
 
 import render.algorithm.Divide;
 
@@ -74,9 +77,9 @@ public class DivideGroupsImageRender implements Render{
 	 */
 	public void acceptImages(RenderImage[] originImages) {
 		this.originImages = originImages;
-		divide.acceptData(Arrays.stream(this.originImages).mapToInt(originImage->(int)originImage.getHeight()).toArray());
 		this.standardWidth = standardWidthImp.standardWidth(Arrays.stream(this.originImages).mapToInt(originImage->originImage.getWidth()).toArray());
 		Arrays.stream(this.originImages).forEach(renderImage->renderImage.afterSetStandardWidth(this.standardWidth));
+		divide.acceptData(Arrays.stream(this.originImages).mapToInt(originImage->(int)originImage.getHeight()).toArray());
 	}
 	@Override
 	public void render(OutputStream os) {
@@ -84,7 +87,11 @@ public class DivideGroupsImageRender implements Render{
 		this.width = this.lBoderWhite+this.rBoderWhite+this.horiWhite*(this.groupCount-1)+this.standardWidth*this.groupCount;
 		//计算最高高度
 		int[][] ca = divide.caculate();
-		this.height = Arrays.stream(ca).mapToInt(ca1->this.tWhite+this.bWhite+this.vertWhite*(ca1.length-1)+Arrays.stream(ca1).sum()).max().getAsInt();
+		this.height = Arrays.stream(ca)
+							.mapToInt(ca1->this.tWhite+this.bWhite+this.vertWhite*(ca1.length-1)
+									+Arrays.stream(ca1).map(ca1Index->this.originImages[ca1Index].getHeight()).sum())
+							.max()
+							.getAsInt();
 		
 		//开始绘制
 		BufferedImage wrapper = new BufferedImage(this.width, this.height, BufferedImage.TYPE_INT_RGB);
@@ -105,6 +112,12 @@ public class DivideGroupsImageRender implements Render{
 				renderImage.afterRenderMe(wrapperG, x, _y);
 				_y += this.originImages[ca[group][index]].getHeight()+this.vertWhite;//累加
 			}
+		}
+		try {
+			wrapperG.dispose();
+			ImageIO.write(wrapper, "jpg", os);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
