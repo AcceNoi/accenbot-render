@@ -36,18 +36,24 @@ public class AverageBacktraceDivide extends Divide {
 		sortedUsage = new boolean[forSortOriginArr.length];
 		double average = (double)Arrays.stream(sortedValue).sum()/groupCount;
 		int averageFmt = (int) Math.ceil(average);
-		return (int[][]) IntStream.range(0, groupCount)
-					.mapToObj(i->catchSumTo(averageFmt))
-					.toArray(int[][]::new);
+		
+		int[][] results = new int[groupCount][];
+		int deviation = 0;//误差
+		for(int i=0;i<groupCount;i++) {
+			Object[] rs = catchSumTo(averageFmt+deviation);
+			results[i] = (int[]) rs[0];
+			deviation += averageFmt-(int)rs[1];
+		}
+		return results;
 	}
 	
 	/**
 	 * 从arr中获取一组数组，使其和==sum
 	 * @param arr
 	 * @param sum
-	 * @return
+	 * @return 两元素数组，前者为分组结果，后者为和
 	 */
-	private int[] catchSumTo(int sum) {
+	private Object[] catchSumTo(int sum) {
 		//本次抽取，已经使用过的元素
 		boolean[] onceSortedUsage = Arrays.copyOf(sortedUsage, sortedUsage.length);
 		int curSum = 0;
@@ -84,7 +90,7 @@ public class AverageBacktraceDivide extends Divide {
 		
 		if(curSum == sum) {
 			//符合条件
-			return rs.stream().mapToInt(i->sortedIndex[i]).toArray();
+			return new Object[] {rs.stream().mapToInt(i->sortedIndex[i]).toArray(),curSum};
 		}else {
 			//不符合
 			rs.forEach(i->sortedUsage[i]=false);
