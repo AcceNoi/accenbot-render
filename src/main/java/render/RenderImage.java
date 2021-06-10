@@ -24,5 +24,5 @@ public abstract class RenderImage {
 	 * @param width
 	 */
 	abstract void afterSetStandardWidth(int width);
-	abstract BufferedImage getBufferedImage();
+	public abstract BufferedImage getBufferedImage();
 }

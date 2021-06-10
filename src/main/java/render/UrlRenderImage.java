@@ -35,7 +35,7 @@ public class UrlRenderImage extends RenderImage {
 	}
 
 	@Override
-	BufferedImage getBufferedImage() {
+	public BufferedImage getBufferedImage() {
 		return bufferImage;
 	}
 
