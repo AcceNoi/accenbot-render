@@ -31,7 +31,7 @@ public class UrlRenderImage extends RenderImage {
 	}
 
 	@Override
-	void afterSetStandardWidth(int standardWidth) {
+	public void afterSetStandardWidth(int standardWidth) {
 	}
 
 	@Override

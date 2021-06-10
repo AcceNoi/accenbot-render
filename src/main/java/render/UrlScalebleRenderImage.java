@@ -21,7 +21,7 @@ public class UrlScalebleRenderImage extends UrlRenderImage{
 	 * 设置标准宽后，按照宽定比例缩小
 	 */
 	@Override
-	void afterSetStandardWidth(int standardWidth) {
+	public void afterSetStandardWidth(int standardWidth) {
 		scale = (double)standardWidth/this.getWidth();
 		BufferedImage scaledImage = new BufferedImage(standardWidth, (int)(getHeight()*scale), this.bufferImage.getType());
 		Graphics2D g2d = scaledImage.createGraphics();

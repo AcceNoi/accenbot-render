@@ -23,6 +23,6 @@ public abstract class RenderImage {
 	 * 在Render接受原始图片数据，设置玩标准宽之后，执行此方法，可以通过此方法来放大缩小图片
 	 * @param width
 	 */
-	abstract void afterSetStandardWidth(int width);
+	protected abstract void afterSetStandardWidth(int width);
 	public abstract BufferedImage getBufferedImage();
 }
